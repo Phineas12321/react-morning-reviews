@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
+import ListItem from './ListItem'
+import movies from '../data/movies.json'
 
 class List extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      movies: [],
+      movies: movies,
     }
   }
 
   render() {
-    return <div className="List">I am the list component</div>
+
+    const moviesList = this.state.movies.map((movie)=>{
+      return <ListItem movie={movie} key={movie.id} />
+    })
+
+    return(
+      <div className="List">
+        {moviesList}
+      </div>
+    )
   }
 }
 export default List
